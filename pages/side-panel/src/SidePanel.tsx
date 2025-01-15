@@ -1,28 +1,12 @@
 import '@src/SidePanel.css';
 import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
 import { exampleThemeStorage } from '@extension/storage';
+import TaskManager from './task-manager';
+import Form from './form';
 import type { ComponentPropsWithoutRef } from 'react';
 
 const SidePanel = () => {
-  const theme = useStorage(exampleThemeStorage);
-  const isLight = theme === 'light';
-  const logo = isLight ? 'side-panel/logo_vertical.svg' : 'side-panel/logo_vertical_dark.svg';
-  const goGithubSite = () =>
-    chrome.tabs.create({ url: 'https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite' });
-
-  return (
-    <div className={`App ${isLight ? 'bg-slate-50' : 'bg-gray-800'} text-2xl`}>
-        <HeaderButtons />
-        <div className="flex justify-center space-x-10">
-            <SearchBar>Search</SearchBar>
-            <SearchBar>Smart Assistant</SearchBar>
-        </div>
-        <div className="mt-4">
-            <ItemList/>
-        </div>
-        <BottomButtons/>
-    </div>
-  );
+  return <Form />;
 };
 
 const ToggleButton = (props: ComponentPropsWithoutRef<'button'>) => {
@@ -42,56 +26,50 @@ const ToggleButton = (props: ComponentPropsWithoutRef<'button'>) => {
 };
 
 const HeaderButtons = () => {
-    return (
-        <div className="ml-auto w-1/3 text-md">
-            <div className="flex gap-4 mr-10">
-                <ToggleButton>New Meeting</ToggleButton>
-                <ToggleButton>Toggle theme</ToggleButton>
-            </div>
-        </div>
-    );
-}
-
+  return (
+    <div className="ml-auto w-1/3 text-md">
+      <div className="flex gap-4 mr-10">
+        <ToggleButton>New Meeting</ToggleButton>
+        <ToggleButton>Toggle theme</ToggleButton>
+      </div>
+    </div>
+  );
+};
 
 const BottomButtons = () => {
-    return (
-        <div className="flex justify-center gap-4 mr-10">
-            <ToggleButton>New Task</ToggleButton>
-            <ToggleButton>Complete</ToggleButton>
-        </div>
-    );
-}
+  return (
+    <div className="flex justify-center gap-4 mr-10">
+      <ToggleButton>New Task</ToggleButton>
+      <ToggleButton>Complete</ToggleButton>
+    </div>
+  );
+};
 
 const SearchBar = (props: ComponentPropsWithoutRef<'input'>) => {
-    return (
+  return (
     <input
-      className={
-        props.className +
-        ' ' +
-        'font-bold mt-4 py-1 px-4 rounded shadow' +
-        'bg-white text-black'
-      }
+      className={props.className + ' ' + 'font-bold mt-4 py-1 px-4 rounded shadow' + 'bg-white text-black'}
       placeholder={props.children as string}
     />
-    );
-}
+  );
+};
 
 const ItemList = () => {
-    return (
-        <div className="flex flex-col gap-4">
-            <Item>Item 1</Item>
-            <Item>Item 2</Item>
-            <Item>Item 3</Item>
-        </div>
-    );
-}
+  return (
+    <div className="flex flex-col gap-4">
+      <Item>Item 1</Item>
+      <Item>Item 2</Item>
+      <Item>Item 3</Item>
+    </div>
+  );
+};
 
 const Item = (props: ComponentPropsWithoutRef<'div'>) => {
-    return (
-        <div className="flex justify-center">
-            <div className="w-1/2 bg-white text-black rounded shadow p-4">{props.children}</div>
-        </div>
-    );
-}
+  return (
+    <div className="flex justify-center">
+      <div className="w-1/2 bg-white text-black rounded shadow p-4">{props.children}</div>
+    </div>
+  );
+};
 
 export default withErrorBoundary(withSuspense(SidePanel, <div> Loading ... </div>), <div> Error Occur </div>);
