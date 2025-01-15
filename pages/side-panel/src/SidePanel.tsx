@@ -6,7 +6,7 @@ import Form from './form';
 import type { ComponentPropsWithoutRef } from 'react';
 
 const SidePanel = () => {
-  return <Form />;
+  return <TaskManager />;
 };
 
 const ToggleButton = (props: ComponentPropsWithoutRef<'button'>) => {
