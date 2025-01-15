@@ -64,15 +64,18 @@ export default function Form() {
 
   return (
     <div className="min-h-screen bg-white p-6">
-      <Card className="w-full max-w-2xl mx-auto bg-white shadow-lg border border-gray-200">
-        <CardHeader className="space-y-4 bg-gray-50 rounded-t-lg p-6">
+      <Card className="w-full max-w-2xl mx-auto bg-teal-50 shadow-lg border border-gray-200">
+        <CardHeader className="space-y-4 bg-teal-100 rounded-t-lg p-6">
           <div className="flex justify-between items-center gap-4">
             <div className="flex-1">
               <Input
                 placeholder="Name"
-                className="text-xl font-bold bg-transparent border-none focus-visible:ring-0 px-0"
+                className="text-xl font-bold bg-transparent border-none focus-visible:ring-0 focus:ring-teal-400 px-0"
               />
-              <Input type="date" className="bg-transparent border-none focus-visible:ring-0 px-0 text-gray-600" />
+              <Input
+                type="date"
+                className="bg-transparent border-none focus-visible:ring-0 focus:ring-teal-400 px-0 text-gray-600"
+              />
             </div>
             <div className="flex gap-2">
               <Button variant="ghost" size="icon">
@@ -86,7 +89,7 @@ export default function Form() {
           <div className="space-y-2">
             <div className="flex flex-wrap gap-1">
               {selectedPeople.map(person => (
-                <div key={person.id} className="bg-teal-100 text-teal-700 rounded px-2 py-1 text-sm flex items-center">
+                <div key={person.id} className="bg-white text-teal-700 rounded px-2 py-1 text-sm flex items-center">
                   {person.email}
                   <button onClick={() => removePerson(person.id)} className="ml-1 text-teal-500 hover:text-teal-700">
                     <X className="h-3 w-3" />
@@ -103,7 +106,7 @@ export default function Form() {
                     value={searchQuery}
                     onChange={e => setSearchQuery(e.target.value)}
                     onFocus={() => setPeopleOpen(true)}
-                    className="pl-8 pr-4 py-2 w-full border-gray-300 rounded-md"
+                    className="pl-8 pr-4 py-2 w-full border-gray-300 bg-white rounded-md"
                   />
                 </div>
               </PopoverTrigger>
@@ -140,19 +143,19 @@ export default function Form() {
           </div>
         </CardHeader>
 
-        <CardContent className="space-y-6 p-6 bg-teal-100">
+        <CardContent className="space-y-6 p-6 bg-white">
           <div className="bg-white border border-teal-200 rounded-lg p-4">
-            <h2 className="text-2xl font-bold mb-2 text-teal-700">Description</h2>
+            <h2 className="text-2xl font-bold mb-2 text-teal-900 bg-teal-100">Description</h2>
             <Textarea
               placeholder="Add a description..."
-              className="bg-transparent border-none resize-none focus-visible:ring-0 text-gray-700 placeholder-teal-400"
+              className="bg-transparent border-none resize-none focus-visible:ring-0 focus:ring-teal-400 text-gray-700 placeholder-teal-700"
             />
           </div>
 
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-bold text-teal-700">Follow Up</h2>
-              <Button onClick={addTask} variant="ghost" size="sm" className="text-teal-600 hover:text-teal-700">
+              <h2 className="text-2xl font-bold text-teal-900">Follow Up</h2>
+              <Button onClick={addTask} variant="ghost" size="sm" className="text-teal-700 hover:text-teal-700">
                 <Plus className="h-5 w-5" />
               </Button>
             </div>
@@ -160,7 +163,7 @@ export default function Form() {
               {tasks.map((task, index) => (
                 <div key={index} className="bg-white border border-teal-200 rounded-lg p-4 space-y-2 group">
                   <div className="flex items-center justify-between">
-                    <span className="font-medium text-teal-700">{index + 1}.</span>
+                    <span className="font-medium text-teal-900 bg-teal-100">{index + 1}.</span>
                     <Button
                       variant="ghost"
                       size="icon"
@@ -170,16 +173,16 @@ export default function Form() {
                     </Button>
                   </div>
                   <Input
-                    placeholder="Task name"
+                    placeholder="Task name.."
                     value={task.name}
                     onChange={e => updateTask(index, 'name', e.target.value)}
-                    className="bg-transparent border-none focus-visible:ring-0 text-gray-700 placeholder-teal-400 font-medium"
+                    className="bg-transparent border-none border-b-2 border-teal-300 focus-visible:ring-0 focus:ring-teal-400 text-gray-700 placeholder-teal-700 font-medium"
                   />
                   <Textarea
-                    placeholder="Task description"
+                    placeholder="description.."
                     value={task.description}
                     onChange={e => updateTask(index, 'description', e.target.value)}
-                    className="bg-transparent border-none resize-none focus-visible:ring-0 text-gray-700 placeholder-teal-400 min-h-[60px]"
+                    className="bg-transparent border-none border-b-2 border-teal-300 resize-none focus-visible:ring-0 focus:ring-teal-400 text-gray-700 placeholder-teal-700 min-h-[60px]"
                   />
                 </div>
               ))}
