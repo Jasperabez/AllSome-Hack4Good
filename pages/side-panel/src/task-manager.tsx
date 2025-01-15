@@ -47,7 +47,7 @@ export default function TaskManager() {
         </div>
         <CardTitle className="text-xl font-semibold text-teal-900">Current Tasks</CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="p-0">
         <TaskList />
       </CardContent>
       <CardFooter className="grid grid-cols-2 gap-4 pt-4 pb-2">
