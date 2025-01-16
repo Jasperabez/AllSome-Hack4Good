@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Plus, X, Users, Pencil, Trash2, Search } from 'lucide-react';
+import { Plus, X, Users, Pencil, Trash2, Search, FileInput, FileOutput } from 'lucide-react';
 import {
   Button,
   Input,
@@ -158,9 +158,17 @@ export default function Form() {
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <h2 className="ml-2 text-2xl font-bold text-teal-900">Follow Up</h2>
-            <Button onClick={addTask} variant="ghost" size="sm" className="text-teal-700 hover:text-teal-700">
-              <Plus className="h-5 w-5" />
-            </Button>
+            <div className="grid grid-cols-3 gap-2">
+              <Button variant="ghost" size="sm" className="text-teal-700 hover:text-teal-700">
+                <FileInput className="h-5 w-5" />
+              </Button>
+              <Button variant="ghost" size="sm" className="text-teal-700 hover:text-teal-700">
+                <FileOutput className="h-5 w-5" />
+              </Button>
+              <Button onClick={addTask} variant="ghost" size="sm" className="text-teal-700 hover:text-teal-700">
+                <Plus className="h-5 w-5" />
+              </Button>
+            </div>
           </div>
           <div className="space-y-4">
             {tasks.map((task, index) => (
