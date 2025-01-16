@@ -24,7 +24,7 @@ The premise of InterLinked is simplicity and practicality. We approach the probl
 - All "backend" code is run on the user's local machine
 
 ## Getting started
-1. Clone this repository.( ```git clone https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite``` )
+1. Clone this repository.( ```git clone https://github.com/Jasperabez/AllSome-Hack4Good/``` )
 2. Check your node version is >= than in `.nvmrc` file, recommend to use [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#intro)
 3. Edit `/packages/i18n/locales/`{your locale(s)}/`messages.json`
 4. In the objects `extensionDescription` and `extensionName`, change the `message` fields (leave `description` alone)
