@@ -11,7 +11,7 @@ export default function TaskManager() {
   const toggleCommandMode = () => setIsCommandMode(!isCommandMode);
 
   return (
-    <Card className="bg-teal-50 border-none shadow-xl overflow-hidden w-full h-screen px-2">
+    <Card className="bg-teal-50 border-none shadow-xl overflow-hidden w-full h-screen pl-2">
       <CardHeader className="flex-shrink-0 space-y-4 pb-4 pt-4">
         <div className="flex items-center justify-between">
           <AnimatePresence initial={false}>
@@ -42,12 +42,16 @@ export default function TaskManager() {
             )}
           </AnimatePresence>
           <Button variant="ghost" size="icon" className="flex-shrink-0 ml-2" onClick={toggleCommandMode}>
-            <MessageSquare className="h-4 w-4 text-teal-600" />
+            {isCommandMode ? (
+              <Search className="ml-2 h-4 w-4 text-teal-600" />
+            ) : (
+              <MessageSquare className="ml-2 h-4 w-4 text-teal-600" />
+            )}
           </Button>
         </div>
         <CardTitle className="text-xl font-semibold text-teal-900">Current Tasks</CardTitle>
       </CardHeader>
-      <CardContent className="p-0">
+      <CardContent className="p-0 mx-2">
         <TaskList />
       </CardContent>
       <CardFooter className="grid grid-cols-2 gap-4 pt-4 pb-2">
