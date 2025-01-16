@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Search, MessageSquare } from 'lucide-react';
 import { Button, Card, CardContent, CardFooter, CardHeader, CardTitle, Checkbox, ScrollArea } from '@extension/ui';
 import { TaskList } from './task-list';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CommandExecutor } from './command-executor';
+import { usePageContext } from './page-context';
 
 export default function TaskManager() {
   const [isCommandMode, setIsCommandMode] = useState(false);
+  const { setPage } = usePageContext();
 
   const toggleCommandMode = () => setIsCommandMode(!isCommandMode);
 
@@ -55,7 +57,7 @@ export default function TaskManager() {
         <TaskList />
       </CardContent>
       <CardFooter className="grid grid-cols-2 gap-4 pt-4 pb-2">
-        <Button variant="outline" className="bg-white hover:bg-teal-50 border-teal-100">
+        <Button variant="outline" className="bg-white hover:bg-teal-50 border-teal-100" onClick={() => setPage('form')}>
           NEW
         </Button>
         <Button className="bg-teal-600 hover:bg-teal-700 text-white border-0">COMPLETE</Button>
