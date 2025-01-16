@@ -3,6 +3,7 @@
 
 ## Intro
 To address the problem statement of Singapore Book Council, with the problems identified as task management, meeting scheduling, and email thread summarization, we have developed InterLinked, a Chrome extension that assist the users to do all that faster and more efficiently.
+
 The premise of InterLinked is simplicity and practicality. We approach the problem statement with the mindset of a user, and not to reinvent the wheel. Hence the extension relies on the user's existing tools, such as Google Calendar and Google Meets, to provide a seamless experience.
 
 ## Tech Stack
