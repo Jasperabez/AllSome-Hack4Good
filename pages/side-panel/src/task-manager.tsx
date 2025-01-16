@@ -56,7 +56,8 @@ export default function TaskManager() {
       <CardContent className="p-0 mx-2">
         <TaskList />
       </CardContent>
-      <CardFooter className="grid grid-cols-2 gap-4 pt-4 pb-2">
+      <CardFooter className="grid grid-cols-3 gap-4 pt-4 pb-2">
+        <Button className="bg-teal-600 hover:bg-teal-700 text-white border-0">MEETS</Button>
         <Button variant="outline" className="bg-white hover:bg-teal-50 border-teal-100" onClick={() => setPage('form')}>
           NEW
         </Button>

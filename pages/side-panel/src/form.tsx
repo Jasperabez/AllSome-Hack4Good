@@ -17,6 +17,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@extension/ui';
+import { usePageContext } from './page-context';
 
 // Mock people data
 const people = [
@@ -35,6 +36,7 @@ export default function Form() {
   const [peopleOpen, setPeopleOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedPeople, setSelectedPeople] = useState<typeof people>([]);
+  const { setPage } = usePageContext();
 
   const addTask = () => {
     setTasks([...tasks, { name: '', description: '' }]);
@@ -80,7 +82,7 @@ export default function Form() {
             <Button variant="ghost" size="icon">
               <Pencil className="h-5 w-5" />
             </Button>
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" onClick={() => setPage('task-manager')}>
               <X className="h-5 w-5" />
             </Button>
           </div>
@@ -195,7 +197,11 @@ export default function Form() {
       </CardContent>
 
       <CardFooter className="p-6">
-        <Button className="w-full bg-teal-600 hover:bg-teal-700 text-white text-lg py-2">COMPLETE</Button>
+        <Button
+          className="w-full bg-teal-600 hover:bg-teal-700 text-white text-lg py-2"
+          onClick={() => setPage('task-manager')}>
+          COMPLETE
+        </Button>
       </CardFooter>
     </Card>
   );
